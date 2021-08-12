@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Part1_exercise_1
 {
@@ -46,21 +47,26 @@ namespace Part1_exercise_1
 
         static void Sort(int[] scores)
         {
-            int temp;
-            
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int temp1;
+
             for (int i = 0; i < scores.Length; i++)
             {
-                temp = scores[i];
+                temp1 = scores[i];
                 for (int j = 0; j < scores.Length; j++)
                 {
-                    if (temp < scores[j])
+                    if (temp1 < scores[j])
                     {
-                        temp = scores[j];
+                        temp1 = scores[j];
                         scores[j] = scores[i];
-                        scores[i] = temp;      
-                    }                    
+                        scores[i] = temp1;
+                    }
                 }
             }
+            stopwatch.Stop();
+            System.Console.WriteLine("time : " + stopwatch.Elapsed.TotalMilliseconds + "ms");            
+
         }
 
         static void Main(string[] args)
